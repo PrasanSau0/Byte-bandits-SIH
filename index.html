@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Garbage Management</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      background: #28a745;
+      padding: 15px;
+      border-bottom: 4px solid #1e7e34;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      color: #ffe066;
+      transform: scale(1.1);
+    }
+    .content {
+      margin-top: 100px;
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="home.html" class="nav-link active">🏠 Home</a>
+  <a href="info.html" class="nav-link">ℹ️ Info</a>
+  <a href="upload.html" class="nav-link">📤 Upload</a>
+  <a href="rewards.html" class="nav-link">🎁 Rewards</a>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    background: linear-gradient(90deg, #34e89e, #0f3443);
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    animation: slideDownNav 1s ease-out forwards;
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .nav-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .nav-link.active {
+    background: rgba(255,255,255,0.3);
+    color: #fffa;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  }
+
+  @keyframes slideDownNav {
+    from { top: -80px; }
+    to { top: 0; }
+  }
+</style>
+
+
+  <div class="content">
+    <h1>Welcome to Smart Garbage Management</h1>
+    <p>Click on the tabs above to explore different sections.</p>
+  </div>
+
+</body>
+</html>

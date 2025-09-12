@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Garbage Management</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* allow space at top */
+      padding-top: 100px; /* space below navbar */
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      background: #28a745;
+      padding: 15px;
+      border-bottom: 4px solid #1e7e34;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      animation: slideDownNav 1s forwards;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      color: #ffe066;
+      transform: scale(1.1);
+    }
+
+    /* Centered content box */
+    .content {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 900px;
+      width: 90%;
+      text-align: center;
+      animation: fadeInContent 1s forwards;
+    }
+
+    h1, h2, h3, p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlide 0.8s forwards;
+    }
+
+    h1 { animation-delay: 1.2s; }
+    h2 { animation-delay: 1.4s; }
+    p  { animation-delay: 1.6s; }
+    h3 { animation-delay: 1.8s; }
+
+    /* Info grid & cards */
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #34e89e, #0f3443);
+      color: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      width: 250px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlide 0.8s forwards;
+    }
+
+    .info-card:nth-child(1) { animation-delay: 2s; }
+    .info-card:nth-child(2) { animation-delay: 2.2s; }
+    .info-card:nth-child(3) { animation-delay: 2.4s; }
+
+    .info-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Animations */
+    @keyframes slideDownNav {
+      from { top: -80px; }
+      to { top: 0; }
+    }
+
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+ <nav>
+  <a href="home.html" class="nav-link active">🏠 Home</a>
+  <a href="info.html" class="nav-link">ℹ️ Info</a>
+  <a href="upload.html" class="nav-link">📤 Upload</a>
+  <a href="rewards.html" class="nav-link">🎁 Rewards</a>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    background: linear-gradient(90deg, #34e89e, #0f3443);
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    animation: slideDownNav 1s ease-out forwards;
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .nav-link:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .nav-link.active {
+    background: rgba(255,255,255,0.3);
+    color: #fffa;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  }
+
+  @keyframes slideDownNav {
+    from { top: -80px; }
+    to { top: 0; }
+  }
+</style>
+
+
+  <!-- Centered Page Content -->
+  <div class="content">
+    <h1>Welcome to Smart Garbage Management</h1>
+    <h2>Clean City, Green City 🌱</h2>
+    <p>Join hands to keep your locality clean and earn rewards while making a difference in the environment.</p>
+
+    <h3>Benefits of Participating:</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>🌿 Environmental Impact</h3>
+        <p>Reduce pollution and protect local ecosystems by reporting garbage.</p>
+      </div>
+      <div class="info-card">
+        <h3>💰 Earn Rewards</h3>
+        <p>Earn tokens for each verified report and redeem exciting app offers.</p>
+      </div>
+      <div class="info-card">
+        <h3>🏘 Community Engagement</h3>
+        <p>Help build a cleaner, healthier, and safer neighborhood for everyone.</p>
+      </div>
+    </div>
+
+    <h3>How it Works:</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>1️⃣ Report</h3>
+        <p>Upload photos of garbage in your area using the upload section.</p>
+      </div>
+      <div class="info-card">
+        <h3>2️⃣ Verification</h3>
+        <p>Our team verifies the complaint and ensures cleanup by authorities.</p>
+      </div>
+      <div class="info-card">
+        <h3>3️⃣ Rewards</h3>
+        <p>Once cleaned, points are credited to your account to redeem coupons and vouchers.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
