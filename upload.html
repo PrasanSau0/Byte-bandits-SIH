@@ -2,207 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Upload - Garbage Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Complaint - ByteBandits (SIH) IH25TNo-5</title>
   <style>
-    html, body {
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100%;
-      background: linear-gradient(135deg, #a8edea, #fed6e3);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 120px; /* space for navbar */
     }
 
-    /* Navbar */
+    header {
+      background: linear-gradient(90deg, #4CAF50, #388E3C);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      background: #2E7D32;
       display: flex;
       justify-content: center;
-      gap: 25px;
-      background: linear-gradient(90deg, #34e89e, #0f3443);
-      padding: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 10;
-      animation: slideDownNav 1s ease-out forwards;
+      gap: 20px;
+      padding: 10px;
     }
-    .nav-link {
+
+    nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      font-size: 18px;
-      padding: 8px 15px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-    }
-    .nav-link:hover {
-      background: rgba(255,255,255,0.2);
-      transform: scale(1.1) rotate(2deg);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .nav-link.active {
-      background: rgba(255,255,255,0.3);
-      color: #fffa;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+      transition: 0.3s;
     }
 
-    /* Content box */
-    .content {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      text-align: center;
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
       width: 90%;
-      max-width: 700px;
-      animation: fadeInContent 1s forwards;
-    }
-
-    h1, h2, h3, p, li {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeSlide 0.8s forwards;
-    }
-    h1 { animation-delay: 1.2s; }
-    h2 { animation-delay: 1.4s; }
-    h3 { animation-delay: 1.6s; }
-    p  { animation-delay: 1.8s; }
-    li { animation-delay: 2s; }
-
-    /* Instructions box */
-    .instructions {
-      margin-bottom: 30px;
-      text-align: left;
-      background: #f8f9fa;
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
       padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      line-height: 1.6;
-    }
-    .instructions h3 { text-align: center; margin-bottom: 15px; color: #28a745; }
-    .instructions ol { margin: 0; padding-left: 20px; }
-
-    /* Upload preview */
-    #uploadPreview {
-      max-width: 100%;
-      margin-top: 15px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
 
-    #points {
-      font-size: 20px;
-      margin-top: 20px;
-      color: #28a745;
-      font-weight: bold;
+    h2 {
+      color: #333;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      margin: 15px 0;
     }
 
     button {
-      margin-top: 15px;
-      padding: 10px 25px;
-      font-size: 16px;
-      font-weight: bold;
+      padding: 12px 24px;
+      background: #4CAF50;
+      color: white;
       border: none;
       border-radius: 8px;
-      background: #28a745;
-      color: white;
       cursor: pointer;
-      transition: all 0.3s;
-    }
-    button:hover {
-      background: #1e7e34;
-      transform: scale(1.05);
+      font-size: 16px;
+      transition: 0.3s;
     }
 
-    @keyframes slideDownNav {
-      from { top: -80px; }
-      to { top: 0; }
+    button:hover {
+      background: #45a049;
     }
-    @keyframes fadeInContent {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .spinner {
+      display: none;
+      margin: 20px auto;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #4CAF50;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
     }
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2E7D32;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
 
+  <header>
+    ByteBandits (SIH) IH25TNo-5
+  </header>
+
   <nav>
-    <a href="home.html" class="nav-link">🏠 Home</a>
-    <a href="info.html" class="nav-link">ℹ️ Info</a>
-    <a href="upload.html" class="nav-link active">📤 Upload</a>
-    <a href="rewards.html" class="nav-link">🎁 Rewards</a>
+    <a href="index.html">Home</a>
+    <a href="info.html">Info</a>
+    <a href="upload.html">Upload</a>
+    <a href="rewards.html">Rewards</a>
   </nav>
 
-  <div class="content">
+  <div class="container">
+    <h2>Upload a Garbage Complaint</h2>
+    <p><strong>Instructions:</strong><br>
+      1. Upload a photo of the garbage in your locality.<br>
+      2. Request will be processed by authorities.<br>
+      3. Once cleaned, reward points will be credited.<br>
+      4. Points depend on the garbage value detected.<br>
+    </p>
 
-    <!-- Instructions -->
-    <div class="instructions">
-      <h3>Instructions for Dropping a Complaint & Claiming Rewards</h3>
-      <ol>
-        <li>Go to the website in the complaints section.</li>
-        <li>Upload a photograph of the waste in your locality. (Camera and location access must be allowed.)</li>
-        <li>The complaint reaches our authorities and they will do the necessary work.</li>
-        <li>Once the area is cleaned, reward points will be credited to your account.</li>
-        <li>You may then go to the rewards section to claim offers, vouchers, or cashback.</li>
-      </ol>
-    </div>
+    <input type="file" id="imageUpload" accept="image/*"><br>
+    <button onclick="submitComplaint()">Upload</button>
 
-    <!-- Upload section -->
-    <h2>Upload Garbage Spot Images</h2>
-    <input type="file" accept="image/*" id="imageUpload">
-    <img id="uploadPreview" src="" alt="">
-    <br>
-    <button id="uploadBtn">Upload</button>
-
-    <div id="points">Points: 0</div>
-
+    <div class="spinner" id="spinner"></div>
+    <div class="result" id="result"></div>
   </div>
 
   <script>
-    let points = 0;
-    const uploadBtn = document.getElementById('uploadBtn');
-    const imageUpload = document.getElementById('imageUpload');
-    const uploadPreview = document.getElementById('uploadPreview');
-    const pointsDisplay = document.getElementById('points');
+    function submitComplaint() {
+      let fileInput = document.getElementById("imageUpload");
+      let spinner = document.getElementById("spinner");
+      let result = document.getElementById("result");
 
-    // Preview uploaded image
-    imageUpload.addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        uploadPreview.src = e.target.result;
-      }
-      reader.readAsDataURL(file);
-    });
-
-    // Add points on clicking Upload
-    uploadBtn.addEventListener('click', function() {
-      if (!imageUpload.files.length) {
-        alert("Please select an image to upload!");
+      if (!fileInput.files.length) {
+        alert("Please upload an image first!");
         return;
       }
-      points += 10; // Award 10 points per upload
-      pointsDisplay.textContent = "Points: " + points;
-      alert("Upload successful! +10 points awarded ✅");
-      // Clear file input and preview
-      imageUpload.value = "";
-      uploadPreview.src = "";
-    });
+
+      // Show spinner and reset result
+      spinner.style.display = "block";
+      result.style.display = "none";
+      result.innerText = "";
+
+      // Simulate processing delay
+      setTimeout(() => {
+        spinner.style.display = "none";
+
+        // Simulate garbage value-based points
+        let points = Math.floor(Math.random() * 16) + 5; // between 5 and 20
+
+        // Save points in localStorage
+        let currentPoints = localStorage.getItem("points") || 0;
+        currentPoints = parseInt(currentPoints) + points;
+        localStorage.setItem("points", currentPoints);
+
+        result.innerText = `✅ Cleanup complete! You earned +${points} points.`;
+        result.style.display = "block";
+      }, 5000);
+    }
   </script>
 
 </body>
 </html>
+
 
 
 
