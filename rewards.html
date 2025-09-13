@@ -2,83 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rewards - Garbage Management</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rewards - ByteBandits (SIH) IH25TNo-5</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #4CAF50, #388E3C);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background: #2E7D32;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .reward {
+      background: #E8F5E9;
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .reward:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #388E3C;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-<nav>
-  <a href="home.html" class="nav-link active">🏠 Home</a>
-  <a href="info.html" class="nav-link">ℹ️ Info</a>
-  <a href="upload.html" class="nav-link">📤 Upload</a>
-  <a href="rewards.html" class="nav-link">🎁 Rewards</a>
-</nav>
 
-<style>
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    background: linear-gradient(90deg, #34e89e, #0f3443);
-    padding: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 10;
-    animation: slideDownNav 1s ease-out forwards;
-  }
+  <header>
+    ByteBandits (SIH) IH25TNo-5
+  </header>
 
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 8px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  }
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="info.html">Info</a>
+    <a href="upload.html">Upload</a>
+    <a href="rewards.html">Rewards</a>
+  </nav>
 
-  .nav-link:hover {
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.1) rotate(2deg);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
+  <div class="container">
+    <h2>🎁 Rewards Section</h2>
+    <p>
+      Redeem your eco-points for exciting app coupons and vouchers.  
+      Keep contributing to a cleaner environment and unlock bigger rewards!
+    </p>
 
-  .nav-link.active {
-    background: rgba(255,255,255,0.3);
-    color: #fffa;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
-  }
-
-  @keyframes slideDownNav {
-    from { top: -80px; }
-    to { top: 0; }
-  }
-</style>
-
-
-  <div class="content">
-    <h2>Token Exchange Rewards 🎁</h2>
-    <p>Use your tokens to redeem exclusive app coupons (like Google Play, but for apps only!).</p>
-    <div class="rewards">
-      <div class="reward-card">
-        <h3>📱 App Discount</h3>
-        <p>50% off on selected apps.</p>
-        <button>Redeem</button>
-      </div>
-      <div class="reward-card">
-        <h3>🎮 Game Tokens</h3>
-        <p>Get free in-game coins for popular apps.</p>
-        <button>Redeem</button>
-      </div>
-      <div class="reward-card">
-        <h3>⭐ Premium Apps</h3>
-        <p>Unlock premium versions of top apps.</p>
-        <button>Redeem</button>
-      </div>
+    <div class="reward">
+      <h3>🎫 10 Points - Discount Coupon</h3>
+      <p>Get ₹50 off on selected apps</p>
+      <button onclick="redeemReward(10)">Redeem</button>
     </div>
+
+    <div class="reward">
+      <h3>🎮 20 Points - Game Voucher</h3>
+      <p>Unlock exclusive in-game items</p>
+      <button onclick="redeemReward(20)">Redeem</button>
+    </div>
+
+    <div class="reward">
+      <h3>💎 30 Points - Premium App Pass</h3>
+      <p>Get 1 month free premium access</p>
+      <button onclick="redeemReward(30)">Redeem</button>
+    </div>
+
+    <p><strong>⭐ Your Current Points: <span id="points">0</span></strong></p>
   </div>
+
+  <script>
+    function loadPoints() {
+      let points = localStorage.getItem("points") || 0;
+      document.getElementById("points").innerText = points;
+    }
+
+    function redeemReward(cost) {
+      let points = parseInt(localStorage.getItem("points") || 0);
+      if (points >= cost) {
+        points -= cost;
+        localStorage.setItem("points", points);
+        document.getElementById("points").innerText = points;
+        alert(`✅ Successfully redeemed reward for ${cost} points!`);
+      } else {
+        alert("❌ Not enough points to redeem this reward.");
+      }
+    }
+
+    window.onload = loadPoints;
+  </script>
+
 </body>
 </html>
+
