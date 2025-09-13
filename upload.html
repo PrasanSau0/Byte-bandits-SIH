@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Complaint - ByteBandits (SIH) IH25TNo-5</title>
+  <title>Upload - ByteBandits (SIH) IH25TNo-5</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -43,7 +43,7 @@
 
     .container {
       width: 90%;
-      max-width: 600px;
+      max-width: 800px;
       margin: 40px auto;
       background: white;
       padding: 25px;
@@ -58,52 +58,40 @@
     }
 
     p {
-      font-size: 16px;
       color: #555;
+      line-height: 1.6;
       margin-bottom: 20px;
     }
 
     input[type="file"] {
       margin: 15px 0;
+      padding: 10px;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     button {
-      padding: 12px 24px;
       background: #4CAF50;
       color: white;
+      padding: 12px 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-size: 16px;
+      margin-top: 15px;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #45a049;
+      background: #388E3C;
     }
 
-    .spinner {
-      display: none;
-      margin: 20px auto;
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #4CAF50;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .result {
+    .status {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
       color: #2E7D32;
-      display: none;
     }
 
     @keyframes fadeIn {
@@ -126,57 +114,49 @@
   </nav>
 
   <div class="container">
-    <h2>Upload a Garbage Complaint</h2>
+    <h2>📸 Upload Garbage Photo</h2>
+
     <p><strong>Instructions:</strong><br>
-      1. Upload a photo of the garbage in your locality.<br>
-      2. Request will be processed by authorities.<br>
-      3. Once cleaned, reward points will be credited.<br>
-      4. Points depend on the garbage value detected.<br>
+      1. Go to the complaints section.<br>
+      2. Upload a photograph of the waste in your locality.<br>
+      3. The complaint will reach our authorities.<br>
+      4. Once the area is cleaned, reward points will be credited.<br>
+      5. You may then claim offers in the rewards section.
     </p>
 
-    <input type="file" id="imageUpload" accept="image/*"><br>
-    <button onclick="submitComplaint()">Upload</button>
+    <input type="file" id="fileInput" accept="image/*"><br>
+    <button onclick="uploadImage()">Upload</button>
 
-    <div class="spinner" id="spinner"></div>
-    <div class="result" id="result"></div>
+    <div class="status" id="status"></div>
   </div>
 
   <script>
-    function submitComplaint() {
-      let fileInput = document.getElementById("imageUpload");
-      let spinner = document.getElementById("spinner");
-      let result = document.getElementById("result");
+    function uploadImage() {
+      const fileInput = document.getElementById("fileInput");
+      const status = document.getElementById("status");
 
-      if (!fileInput.files.length) {
-        alert("Please upload an image first!");
+      if (fileInput.files.length === 0) {
+        alert("Please select an image first.");
         return;
       }
 
-      // Show spinner and reset result
-      spinner.style.display = "block";
-      result.style.display = "none";
-      result.innerText = "";
+      status.innerHTML = "⏳ Request is being processed...";
 
       // Simulate processing delay
       setTimeout(() => {
-        spinner.style.display = "none";
-
-        // Simulate garbage value-based points
-        let points = Math.floor(Math.random() * 16) + 5; // between 5 and 20
-
-        // Save points in localStorage
-        let currentPoints = localStorage.getItem("points") || 0;
-        currentPoints = parseInt(currentPoints) + points;
+        let earnedPoints = Math.floor(Math.random() * 15) + 5; // 5–20 points
+        let currentPoints = parseInt(localStorage.getItem("points") || 0);
+        currentPoints += earnedPoints;
         localStorage.setItem("points", currentPoints);
 
-        result.innerText = `✅ Cleanup complete! You earned +${points} points.`;
-        result.style.display = "block";
-      }, 5000);
+        status.innerHTML = `✅ Area cleaned! You earned +${earnedPoints} points. <br> ⭐ Total Points: ${currentPoints}`;
+      }, 3000);
     }
   </script>
 
 </body>
 </html>
+
 
 
 
